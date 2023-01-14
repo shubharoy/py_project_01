@@ -37,8 +37,7 @@ def conversionType(convertType):
             conversionCalculation(tempConversion, 'Fahrenheit', 'Celsius')
         else:
             print("Error !! Please enter proper choice")
-    elif convertType == 2:
-       
+    elif convertType == 2:       
         print(
             "1. Foot To Inch\n"
             "2. Inch To Foot\n"
@@ -46,29 +45,56 @@ def conversionType(convertType):
             "4. Centimeter To Inch\n"
             "5. Centimeter To Meter\n"
             "6. Meter To Centimeter\n"
-        )
-        #meaConversion = int(input("Enter your choice: "))
+        )        
+
         meaConversion = int(errorHandle())
-        if meaConversion == 1 :
-            #For Foot To Inch
-            conversionCalculation(3, 'Foot', 'Inch')        
-        elif meaConversion == 2 :
-            #For Inch to Foot
-            conversionCalculation(4, 'Inch', 'Foot')
-        elif meaConversion == 3 :
-            #For Inch TO Centimeter
-            conversionCalculation(5, 'Inch', 'Centimeter')
-        elif meaConversion == 4 :
-            #For Centimeter To Inch
-            conversionCalculation(6, 'Centimeter', 'Inch')
-        elif meaConversion == 5 :
-            #For Centimeter To Meter
-            conversionCalculation(7, 'Centimeter', 'Meter')
-        elif meaConversion == 6 :
-            #For Meter To Centimeter
-            conversionCalculation(8, 'Meter', 'Centimeter')
+        
+        ConCal_Disc = {
+            1 : conversionCalculation(3, 'Foot', 'Inch'),
+            2 : conversionCalculation(4, 'Inch', 'Foot'),
+            3 : conversionCalculation(5, 'Inch', 'Centimeter'),
+            4 : conversionCalculation(6, 'Centimeter', 'Inch'),
+            5 : conversionCalculation(7, 'Centimeter', 'Meter'),
+            6 : conversionCalculation(8, 'Meter', 'Centimeter')               
+        }       
+
+       
+        if ConCal_Disc.get(meaConversion):
+            ConCal_Disc.get(meaConversion)
         else:
             print("Error !! Please enter proper choice")
+
+
+        #print("meaConversion:::",meaConversion)
+        # for discKeys, discVal in ConCal_Disc.items():
+        #     if meaConversion == int(discKeys):
+        #         discVal
+        #         runConversion = True
+                
+        # if runConversion == False:
+        #     print("Error !! Please enter proper choice")
+
+
+        # if meaConversion == 1 :
+        #     #For Foot To Inch
+        #     conversionCalculation(3, 'Foot', 'Inch')        
+        # elif meaConversion == 2 :
+        #     #For Inch to Foot
+        #     conversionCalculation(4, 'Inch', 'Foot')
+        # elif meaConversion == 3 :
+        #     #For Inch TO Centimeter
+        #     conversionCalculation(5, 'Inch', 'Centimeter')
+        # elif meaConversion == 4 :
+        #     #For Centimeter To Inch
+        #     conversionCalculation(6, 'Centimeter', 'Inch')
+        # elif meaConversion == 5 :
+        #     #For Centimeter To Meter
+        #     conversionCalculation(7, 'Centimeter', 'Meter')
+        # elif meaConversion == 6 :
+        #     #For Meter To Centimeter
+        #     conversionCalculation(8, 'Meter', 'Centimeter')
+        # else:
+        #     print("Error !! Please enter proper choice")
     else:
         print("Error !! Please enter proper choice")
 
@@ -80,7 +106,7 @@ def conversionType(convertType):
 def conversionCalculation(converType, fromVal, toVal):    
     #Error handling by try-except method
     try:
-        givenVal = float(input("Enter " + str(fromVal) +" Value: "))        
+        givenVal = float(input("Enter " + str(converType) + str(fromVal) +" Value: "))        
     except (SyntaxError, ValueError):
         return 0 
 
